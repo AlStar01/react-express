@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 
 import CarRow from '../CarRow/CarRow';
 
-import CARS from '../cars';
-
 class CarTable extends Component {
     render() {
-        const rows = CARS.map(car => <CarRow car={car} key={car.car_id} />);
+        const rows = this.props.cars.map(car => <CarRow car={car} key={car.car_id} />);
         
         return (
             <table>

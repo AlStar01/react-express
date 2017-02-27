@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import SearchBar from './components/search/SearchBar/SearchBar';
-import CarTable from './components/table/CarTable/CarTable';
+import CARS from './components/table/cars';
+
+import FilterableCarTable from './components/table/FilterableCarTable/FilterableCarTable';
 
 class App extends Component {
   render() {
@@ -17,10 +18,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <div>
-          <SearchBar />
-          <br />
-          <CarTable />
+        <div className="App-content">
+          <FilterableCarTable cars={CARS} />
         </div>
       </div>
     );
