@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import SearchBar from './components/search/SearchBar';
+import SearchBar from './components/search/SearchBar/SearchBar';
+import CarTable from './components/table/CarTable/CarTable';
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
 
         <div>
           <SearchBar />
+          <br />
+          <CarTable />
         </div>
       </div>
     );
