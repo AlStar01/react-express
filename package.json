@@ -15,6 +15,7 @@
     "serve-favicon": "~2.3.2"
   },
   "devDependencies": {
+    "concurrently": "^3.3.0",
     "eslint": "^3.16.1",
     "eslint-plugin-react": "^6.10.0"
   }
