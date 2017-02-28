@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Button, Textfield } from 'react-mdl';
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -36,11 +38,12 @@ class SearchBar extends Component {
         
         return (
             <form>
-                <input 
-                    type="text" 
-                    placeholder="Search..."
-                    value={this.props.filterText}
+                <Textfield
                     onChange={this.handleFilterTextInputChange}
+                    label="Search..."
+                    value={this.props.filterText}
+                    style={{width: '200px'}}
+                    floatingLabel
                 />
 
                 <select value={this.props.make} onChange={this.handleSelectChange}>
@@ -48,7 +51,7 @@ class SearchBar extends Component {
                         {options}
                 </select>
 
-                <button onClick={this.handleResetClick}>Reset</button>
+                <Button raised ripple onClick={this.handleResetClick}>Reset</Button>
             </form>
         );
     }

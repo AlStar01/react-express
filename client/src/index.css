@@ -1,5 +1,20 @@
+html {
+  font-size: 62.5%;
+  line-height: 1.4;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', Helvetica Neue, sans-serif;
+  font-size: 1.6rem;
+  color: rgba(0,0,0,0.87);
+}
+
+p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.010em;
+  line-height: 1.6em;
+  margin: 0.8em 0 1.6em;
 }
