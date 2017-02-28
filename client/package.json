@@ -9,6 +9,9 @@
     "react-mdl": "^1.9.0"
   },
   "devDependencies": {
+    "enzyme": "^2.7.1",
+    "jest-enzyme": "^2.1.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.2"
   },
   "scripts": {
