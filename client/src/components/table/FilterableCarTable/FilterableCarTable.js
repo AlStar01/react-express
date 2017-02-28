@@ -9,10 +9,12 @@ class FilterableCarTable extends Component {
         super(props);
 
         this.state = {
-            filterText: ''
+            filterText: '',
+            make: -1
         };
 
         this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
     handleFilterTextInput(filterText) {
@@ -21,16 +23,26 @@ class FilterableCarTable extends Component {
         });
     }
 
+    handleSelect(make) {
+        this.setState({
+            make: make
+        });
+    }
+
     render() {
         return (
             <div>
                 <SearchBar 
                     filterText={this.state.filterText}
+                    make={this.state.make}
                     onFilterTextInput={this.handleFilterTextInput}
+                    onSelect={this.handleSelect}
+                    cars={this.props.cars}
                 />
                 <br />
                 <CarTable 
                     cars={this.props.cars}
+                    make={this.state.make}
                     filterText={this.state.filterText}
                 />
             </div>

@@ -7,8 +7,11 @@ class CarTable extends Component {
         const filterText = this.props.filterText.toLowerCase();
         
         const rows = this.props.cars
-                                .filter(car => car.make.toLowerCase().indexOf(filterText) > -1)
-                                .map(car => <CarRow car={car} key={car.car_id} />);
+                                .filter(car => {
+                                     return car.make.toLowerCase().indexOf(filterText) > -1  ||
+                                            car.model.toLowerCase().indexOf(filterText) > -1
+                                })
+                                .map(car => <CarRow car={car} key={car.car_id} />)                 
         
         if(rows.length > 0) {
             return (
