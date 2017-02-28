@@ -31,7 +31,7 @@ class SearchBar extends Component {
                 />
 
                 <select value={this.props.make} onChange={this.handleSelectChange}>
-                        <option value="-1">Select make...</option>
+                        <option value="">Select make...</option>
                         {options}
                 </select>
             </form>

@@ -8,11 +8,12 @@ class CarTable extends Component {
         
         const rows = this.props.cars
                                 .filter(car => {
-                                     return car.make.toLowerCase().indexOf(filterText) > -1  ||
-                                            car.model.toLowerCase().indexOf(filterText) > -1
+                                     return (car.make.toLowerCase().indexOf(filterText) > -1  ||
+                                            car.model.toLowerCase().indexOf(filterText) > -1) &&
+                                            car.make.indexOf(this.props.make) > -1
                                 })
                                 .map(car => <CarRow car={car} key={car.car_id} />)                 
-        
+
         if(rows.length > 0) {
             return (
                 <table>

@@ -10,7 +10,7 @@ class FilterableCarTable extends Component {
 
         this.state = {
             filterText: '',
-            make: -1
+            make: ''
         };
 
         this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
