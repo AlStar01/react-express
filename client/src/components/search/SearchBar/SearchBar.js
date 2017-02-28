@@ -23,7 +23,14 @@ class SearchBar extends Component {
     }
     
     render() {
-        const options = [...new Set(this.props.cars.map(car => car.make))]
+        const filterText = this.props.filterText.toLowerCase();
+        
+        const filteredCars = this.props.cars.filter(car => {
+            return car.make.toLowerCase().indexOf(filterText) > -1  ||
+                   car.model.toLowerCase().indexOf(filterText) > -1;
+        });
+        
+        const options = [...new Set(filteredCars.map(car => car.make))]
             .sort((a, b) => a > b)
             .map(make => <option value={make} key={make}>{make}</option>);
         
