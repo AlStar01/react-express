@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-// React Material Design Lite
-import 'react-mdl/extra/material.css';
-import 'react-mdl/extra/material.js';
+// React Bootstrap
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <App />,
