@@ -6,6 +6,7 @@ class SearchBar extends Component {
 
         this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
         this.handleSelectChange = this.handleSelectChange.bind(this);
+        this.handleResetClick = this.handleResetClick.bind(this);
     }
 
     handleFilterTextInputChange(e) {
@@ -14,6 +15,11 @@ class SearchBar extends Component {
 
     handleSelectChange(e) {
         this.props.onSelect(e.target.value);
+    }
+
+    handleResetClick(e) {
+        e.preventDefault();
+        this.props.onReset();
     }
     
     render() {
@@ -34,6 +40,8 @@ class SearchBar extends Component {
                         <option value="">Select make...</option>
                         {options}
                 </select>
+
+                <button onClick={this.handleResetClick}>Reset</button>
             </form>
         );
     }

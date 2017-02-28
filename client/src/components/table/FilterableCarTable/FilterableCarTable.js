@@ -15,6 +15,7 @@ class FilterableCarTable extends Component {
 
         this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     handleFilterTextInput(filterText) {
@@ -29,6 +30,13 @@ class FilterableCarTable extends Component {
         });
     }
 
+    handleReset() {
+        this.setState({
+            filterText: '',
+            make: ''
+        });
+    }
+
     render() {
         return (
             <div>
@@ -37,6 +45,7 @@ class FilterableCarTable extends Component {
                     make={this.state.make}
                     onFilterTextInput={this.handleFilterTextInput}
                     onSelect={this.handleSelect}
+                    onReset={this.handleReset}
                     cars={this.props.cars}
                 />
                 <br />
