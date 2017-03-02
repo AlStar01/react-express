@@ -18,4 +18,8 @@ class CarRow extends Component {
     }
 }
 
+CarRow.propTypes = {
+    car: React.PropTypes.object.isRequired
+}
+
 export default CarRow;
