@@ -20,14 +20,19 @@ describe('CarRow', () => {
     });
 
     it('should contain a single <tr> element', () => {
-        expect(render(<CarRow car={car} />).find('tr').length).toEqual(1);
+        const wrapper = shallow(<CarRow car={car} />);
+        expect(wrapper.find('tr')).toBePresent();
     });
 
     it('should contain <td> elements for each property', () => {
-        expect(render(<CarRow car={car} />).find('td').length).toEqual(7);
+        const wrapper = shallow(<CarRow car={car} />);
+        expect(wrapper.find('td').length).toEqual(7);
     });
 
     it('should render to static HTML', () => {
-        expect(render(<CarRow car={car} />).text()).toContain('foo');
+        const wrapper = shallow(<CarRow car={car} />);
+
+        expect(wrapper).toContainReact(<td>foo</td>);
+        expect(wrapper).toContainReact(<td>bar</td>);
     });
 });

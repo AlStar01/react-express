@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SearchBar from '../../search/SearchBar/SearchBar';
+import FilterBar from '../../search/FilterBar/FilterBar';
 
 import CarTable from '../CarTable/CarTable';
 
@@ -40,7 +40,7 @@ class FilterableCarTable extends Component {
     render() {
         return (
             <div>
-                <SearchBar 
+                <FilterBar 
                     filterText={this.state.filterText}
                     make={this.state.make}
                     onFilterTextInput={this.handleFilterTextInput}
