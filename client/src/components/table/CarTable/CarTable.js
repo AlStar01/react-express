@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Row, Col, Table } from 'react-bootstrap';
+
 import CarRow from '../CarRow/CarRow';
 
 class CarTable extends Component {
@@ -16,20 +18,22 @@ class CarTable extends Component {
 
         if(rows.length > 0) {
             return (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Make</th>
-                            <th>Model</th>
-                            <th>Displacement</th>
-                            <th>Cylinders</th>
-                            <th>City</th>
-                            <th>Highway</th>
-                            <th>Combined</th>
-                        </tr>
-                    </thead>
-                    <tbody>{rows}</tbody>
-                </table>
+                <Row>
+                    <Col sm={12}>
+                        <Table responsive>
+                            <thead>
+                                <tr>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <th>Displacement</th>
+                                    <th>Cylinders</th>
+                                    <th>Combined</th>
+                                </tr>
+                            </thead>
+                            <tbody>{rows}</tbody>
+                        </Table>
+                    </Col>
+                </Row>
             );
         }
         else {

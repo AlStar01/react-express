@@ -26,7 +26,7 @@ describe('CarRow', () => {
 
     it('should contain <td> elements for each property', () => {
         const wrapper = shallow(<CarRow car={car} />);
-        expect(wrapper.find('td').length).toEqual(7);
+        expect(wrapper.find('td').length).toEqual(5);
     });
 
     it('should render to static HTML', () => {

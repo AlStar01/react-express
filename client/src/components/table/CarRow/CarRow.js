@@ -10,8 +10,6 @@ class CarRow extends Component {
                 <td>{car.model}</td>
                 <td>{car.displacement}</td>
                 <td>{car.cylinders}</td>
-                <td>{car.city_fuel_economy}</td>
-                <td>{car.highway_fuel_economy}</td>
                 <td>{car.combined_fuel_economy}</td>
             </tr>
         );

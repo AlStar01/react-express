@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button, Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl  } from 'react-bootstrap';
+import { Button, Row, Col, Form, FormGroup, ControlLabel, FormControl  } from 'react-bootstrap';
 
 class FilterBar extends Component {
     constructor(props) {
@@ -37,43 +37,41 @@ class FilterBar extends Component {
             .map(make => <option value={make} key={make}>{make}</option>);
         
         return (
-            <Grid>
-                <Row>
-                    <Col sm={12}>
-                        <Form inline>
-                            <FormGroup controlId="filterSearch">
-                                <ControlLabel>Search</ControlLabel>
-                                {' '}
-                                <FormControl
-                                    type="text"
-                                    onChange={this.handleFilterTextInputChange}
-                                    placeholder="Search..."
-                                    value={this.props.filterText}
-                                />
-                            </FormGroup>
-
+            <Row>
+                <Col sm={12}>
+                    <Form inline>
+                        <FormGroup controlId="filterSearch">
+                            <ControlLabel>Search</ControlLabel>
                             {' '}
+                            <FormControl
+                                type="text"
+                                onChange={this.handleFilterTextInputChange}
+                                placeholder="Search..."
+                                value={this.props.filterText}
+                            />
+                        </FormGroup>
 
-                            <FormGroup controlId="filterSelect">
-                                <ControlLabel>Make</ControlLabel>
-                                {' '}
-                                <FormControl 
-                                    componentClass="select" 
-                                    placeholder="Select make..." 
-                                    value={this.props.make} 
-                                    onChange={this.handleSelectChange}>
-                                        <option value="">Select make...</option>
-                                        {options}
-                                </FormControl>
-                            </FormGroup>
+                        {' '}
 
+                        <FormGroup controlId="filterSelect">
+                            <ControlLabel>Make</ControlLabel>
                             {' '}
+                            <FormControl 
+                                componentClass="select" 
+                                placeholder="Select make..." 
+                                value={this.props.make} 
+                                onChange={this.handleSelectChange}>
+                                    <option value="">Select make...</option>
+                                    {options}
+                            </FormControl>
+                        </FormGroup>
 
-                            <Button onClick={this.handleResetClick}>Reset</Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Grid>
+                        {' '}
+
+                        <Button onClick={this.handleResetClick}>Reset</Button>
+                    </Form>
+                </Col>
+            </Row>
         );
     }
 }
