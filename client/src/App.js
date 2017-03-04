@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Grid } from 'react-bootstrap';
+import { Grid, Navbar } from 'react-bootstrap';
 
 import CARS from './components/table/cars';
 
@@ -11,6 +11,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar fixedTop>
+          <Navbar.Brand>
+            <a href="#">React Sample</a>
+          </Navbar.Brand>
+        </Navbar>
+
         <main className="App-Content">
           <Grid>
               <FilterableCarTable cars={CARS} />

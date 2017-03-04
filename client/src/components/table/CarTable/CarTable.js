@@ -14,13 +14,13 @@ class CarTable extends Component {
                                             car.model.toLowerCase().indexOf(filterText) > -1) &&
                                             car.make.indexOf(this.props.make) > -1
                                 })
-                                .map(car => <CarRow car={car} key={car.car_id} />)                 
+                                .map(car => <CarRow car={car} key={car.car_id} />);                 
 
         if(rows.length > 0) {
             return (
                 <Row>
                     <Col sm={12}>
-                        <Table responsive>
+                        <Table responsive bordered hover>
                             <thead>
                                 <tr>
                                     <th>Make</th>
