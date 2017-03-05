@@ -4,6 +4,8 @@ import FilterBar from '../../search/FilterBar/FilterBar';
 
 import CarTable from '../CarTable/CarTable';
 
+import PaginationBar from '../PaginationBar/PaginationBar';
+
 class FilterableCarTable extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +56,7 @@ class FilterableCarTable extends Component {
                     make={this.state.make}
                     filterText={this.state.filterText}
                 />
+                <PaginationBar />
             </div>
         );
     }
