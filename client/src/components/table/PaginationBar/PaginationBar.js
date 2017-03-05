@@ -6,6 +6,26 @@ import {
     FormControl, ControlLabel } from 'react-bootstrap';
 
 class PaginationBar extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleLimitSelect = this.handleLimitSelect.bind(this);
+        this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
+        this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+    }
+
+    handleLimitSelect(e) {
+        console.log(e.target.value);
+    }
+
+    handlePreviousButtonClick() {
+        console.log("Previous button clicked");
+    }
+
+    handleNextButtonClick() {
+        console.log("Next button clicks");
+    }
+
     render() {
         return (
             <Row>
@@ -20,7 +40,8 @@ class PaginationBar extends Component {
                                 {' '}
                                 <FormControl
                                     componentClass="select" 
-                                    placeholder="Per page">
+                                    placeholder="Per page"
+                                    onChange={this.handleLimitSelect}>
                                         <option value="10">10</option>
                                         <option value="25">25</option>
                                         <option value="50">50</option>
@@ -28,9 +49,13 @@ class PaginationBar extends Component {
                                 </FormControl>
                             </FormGroup>
                             {' '}
-                            <Button><Glyphicon glyph="chevron-left"></Glyphicon></Button>
+                            <Button onClick={this.handlePreviousButtonClick}>
+                                <Glyphicon glyph="chevron-left"></Glyphicon>
+                            </Button>
                             {' '}
-                            <Button><Glyphicon glyph="chevron-right"></Glyphicon></Button>
+                            <Button onClick={this.handleNextButtonClick}>
+                                <Glyphicon glyph="chevron-right"></Glyphicon>
+                            </Button>
                         </Form>
                     </div>
                 </Col>
