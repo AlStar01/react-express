@@ -15,7 +15,7 @@ class PaginationBar extends Component {
     }
 
     handleLimitSelect(e) {
-        console.log(e.target.value);
+        this.props.onLimitSelect(e.target.value);
     }
 
     handlePreviousButtonClick() {
@@ -27,11 +27,13 @@ class PaginationBar extends Component {
     }
 
     render() {
+        const pagination = this.props.pagination;
+        
         return (
             <Row>
                 <Col sm={12}>
-                    <div className="pull-left">
-                        <div style={{ paddingTop: 7 }}>Showing result 1 of 100</div>
+                    <div className="pull-left pagination__label">
+                        <div style={{ paddingTop: 7 }}>Showing result 1 - 10 of {pagination.total}</div>
                     </div>
                     <div className="pull-right">
                         <Form inline>
@@ -41,6 +43,7 @@ class PaginationBar extends Component {
                                 <FormControl
                                     componentClass="select" 
                                     placeholder="Per page"
+                                    value={this.props.pagination.limit}
                                     onChange={this.handleLimitSelect}>
                                         <option value="10">10</option>
                                         <option value="25">25</option>

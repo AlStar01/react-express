@@ -3,8 +3,6 @@ import './App.css';
 
 import { Grid, Navbar } from 'react-bootstrap';
 
-import CARS from './components/table/cars';
-
 import FilterableCarTable from './components/table/FilterableCarTable/FilterableCarTable';
 
 class App extends Component {
@@ -19,7 +17,7 @@ class App extends Component {
 
         <main className="App-Content">
           <Grid>
-              <FilterableCarTable cars={CARS} />
+              <FilterableCarTable />
           </Grid>
         </main>
        </div>
