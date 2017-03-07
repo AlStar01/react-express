@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import { Button } from 'react-bootstrap';
+
 import PaginationBar from './PaginationBar';
 
 let pagination = {
@@ -17,5 +19,18 @@ describe('Pagination Bar', () => {
     it('should display total results', () => {
         const wrapper = shallow(<PaginationBar pagination={pagination} />);
         expect(wrapper.find('.pagination__label')).toIncludeText(pagination.total);
+    });
+
+    it('should disable previous button on first page', () => {
+        const wrapper = shallow(<PaginationBar pagination={pagination} />);
+        expect(wrapper.find(Button).at(0)).toBeDisabled();
+    });
+
+    it('should enable previous button past first page', () => {
+        const wrapper = shallow(<PaginationBar pagination={pagination} />);
+        wrapper.setProps({ pagination: {
+            page: 2
+        }});
+        expect(wrapper.find(Button).at(0)).not.toBeDisabled();
     });
 });

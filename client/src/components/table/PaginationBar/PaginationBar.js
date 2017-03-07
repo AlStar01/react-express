@@ -28,6 +28,9 @@ class PaginationBar extends Component {
 
     render() {
         const pagination = this.props.pagination;
+
+        const prevDisabled = (pagination.page === 1);
+        const nextDisabled = false;
         
         return (
             <Row>
@@ -52,11 +55,11 @@ class PaginationBar extends Component {
                                 </FormControl>
                             </FormGroup>
                             {' '}
-                            <Button onClick={this.handlePreviousButtonClick}>
+                            <Button id="previous" onClick={this.handlePreviousButtonClick} disabled={prevDisabled}>
                                 <Glyphicon glyph="chevron-left"></Glyphicon>
                             </Button>
                             {' '}
-                            <Button onClick={this.handleNextButtonClick}>
+                            <Button id="next" onClick={this.handleNextButtonClick} disabled={nextDisabled}>
                                 <Glyphicon glyph="chevron-right"></Glyphicon>
                             </Button>
                         </Form>
