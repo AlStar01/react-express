@@ -33,25 +33,29 @@ class PaginationBar extends Component {
 
     getStartingValue() {
         const pagination = this.props.pagination;
-        return (pagination.page * pagination.limit + 1) - pagination.limit;
+        const value = (pagination.page * pagination.limit + 1) - pagination.limit;
+        return pagination.total > 0 ? value : 0;
     }
 
     getEndingValue() {
-        return this.props.pagination.page * this.props.pagination.limit;
+        return Math.min(this.props.pagination.page * this.props.pagination.limit, this.props.pagination.total);
     }
 
     render() {
         const pagination = this.props.pagination;
 
+        const startingValue = this.getStartingValue();
+        const endingValue = this.getEndingValue();
+        
         const prevDisabled = (pagination.page === 1);
-        const nextDisabled = false;
+        const nextDisabled = pagination.total <= endingValue;
         
         return (
             <Row>
                 <Col sm={12}>
                     <div className="pull-left pagination__label">
                         <div style={{ paddingTop: 7 }}>
-                            Showing result {this.getStartingValue()} - {this.getEndingValue()} of {pagination.total}
+                            Showing result {startingValue} - {endingValue} of {pagination.total}
                         </div>
                     </div>
                     <div className="pull-right">

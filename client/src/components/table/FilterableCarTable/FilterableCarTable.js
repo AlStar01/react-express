@@ -37,14 +37,14 @@ class FilterableCarTable extends Component {
     }
 
     componentDidMount() {
-        const cars = this.getCars(this.state.pagination);
+        const cars = this.getCars();
         
         // timeout is to simulate API call
         setTimeout(() => {
             const newState = update(this.state, {
-                cars: { $set: cars },
+                cars: { $set: cars.cars },
                 pagination: {
-                    total: { $set: CARS.length }
+                    total: { $set: cars.total }
                 }
             });
 
@@ -52,11 +52,28 @@ class FilterableCarTable extends Component {
         }, 500);
     }
 
-    getCars(pagination) {
-        const beg = this.getStartingIndex(pagination);
-        const end = this.getEndingIndex(pagination);
+    getCars(filterText) {
+        const beg = this.getStartingIndex(this.state.pagination);
+        const end = this.getEndingIndex(this.state.pagination);
 
-        return CARS.slice(beg, end);
+        filterText = filterText && filterText.length ? filterText.toLowerCase() : '';
+
+        let result = {};
+
+        const filteredCars = CARS
+            .filter(car => {
+                    return (car.make.toLowerCase().indexOf(filterText) > -1  ||
+                        car.model.toLowerCase().indexOf(filterText) > -1) &&
+                        car.make.indexOf(this.state.make) > -1
+            });
+
+        result.total = filteredCars.length;
+
+        result.cars = filteredCars
+            .slice(beg, end)
+            .sort((a, b) => a.make > b.make)
+
+        return result;
     }
 
     getStartingIndex(pagination) {
@@ -68,8 +85,14 @@ class FilterableCarTable extends Component {
     }
 
     handleFilterTextInput(filterText) {
+        const cars = this.getCars(filterText);
+
         const newState = update(this.state, {
-            filterText: { $set: filterText }
+            filterText: { $set: filterText },
+            cars: { $set: cars.cars },
+            pagination: {
+                total: { $set: cars.total }
+            }
         });
         
         this.setState(newState);
