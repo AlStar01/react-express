@@ -38,15 +38,19 @@ class FilterableCarTable extends Component {
     componentDidMount() {
         // timeout is to simulate API call
         setTimeout(() => {
-            this.setState({
-                cars: CARS,
+            let cars = CARS.slice(0, this.state.pagination.limit);
+            
+            const newState = update(this.state, {
+                cars: { $set: cars },
                 pagination: {
                     page: 2,
                     limit: 10,
-                    total: CARS.length
+                    total: { $set: CARS.length }
                 }
             });
-        }, 1000);
+
+            this.setState(newState);
+        }, 500);
     }
 
     handleFilterTextInput(filterText) {
@@ -69,7 +73,15 @@ class FilterableCarTable extends Component {
     }
 
     handleLimitSelect(limit) {
+        const pagination = this.state.pagination;
+        
+        const beg = (pagination.page - 1) * limit + 1;
+        const end = Math.min(pagination.page * limit, CARS.length);
+        
+        let cars = CARS.slice(beg, end);
+        
         const newState = update(this.state, {
+            cars: { $set: cars },
             pagination: {
                 limit: { $set: limit }
             }
