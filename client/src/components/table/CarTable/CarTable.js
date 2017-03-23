@@ -14,31 +14,32 @@ class CarTable extends Component {
                                             car.model.toLowerCase().indexOf(filterText) > -1) &&
                                             car.make.indexOf(this.props.make) > -1
                                 })
-                                .map(car => <CarRow car={car} key={car.car_id} />);                 
+                                .map(car => <CarRow car={car} key={car.car_id} />);               
 
-        if(rows.length > 0) {
-            return (
-                <Row>
-                    <Col sm={12}>
-                        <Table responsive bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Make</th>
-                                    <th>Model</th>
-                                    <th>Displacement</th>
-                                    <th>Cylinders</th>
-                                    <th>Combined</th>
-                                </tr>
-                            </thead>
-                            <tbody>{rows}</tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            );
-        }
-        else {
-            return <div>No matching results</div>
-        }
+        return (
+            <Row>
+                <Col sm={12}>
+                    <Table responsive bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Displacement</th>
+                                <th>Cylinders</th>
+                                <th>Combined</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows.length > 0 ? (
+                                rows
+                            ) : (
+                                <tr><td colSpan="5">No matching results</td></tr>
+                            )}
+                        </tbody>
+                    </Table>
+                </Col>
+            </Row>
+        );
     }
 }
 

@@ -28,7 +28,7 @@ class PaginationBar extends Component {
     }
 
     handleNextButtonClick() {
-        console.log("Next button clicks");
+        this.props.onNextButtonClick();
     }
 
     getStartingValue() {
