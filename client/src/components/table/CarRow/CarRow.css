@@ -1,0 +1,9 @@
+.carRow button {
+    padding: 0;
+    position: relative;
+    top: 2px;
+}
+
+.carRow .glyphicon {
+    font-size: 15px;
+}
