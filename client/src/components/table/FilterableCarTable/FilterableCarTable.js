@@ -32,6 +32,7 @@ class FilterableCarTable extends Component {
         this.handleReset = this.handleReset.bind(this);
 
         this.handleLimitSelect = this.handleLimitSelect.bind(this);
+        this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this); 
     }
 
     componentDidMount() {
@@ -40,7 +41,7 @@ class FilterableCarTable extends Component {
             this.setState({
                 cars: CARS,
                 pagination: {
-                    page: 1,
+                    page: 2,
                     limit: 10,
                     total: CARS.length
                 }
@@ -77,6 +78,16 @@ class FilterableCarTable extends Component {
         this.setState(newState);
     }
 
+    handlePreviousButtonClick() {
+        const newState = update(this.state, {
+            pagination: {
+                page: { $set: this.state.pagination.page - 1}
+            }
+        });
+
+        this.setState(newState);
+    }
+
     render() {
         return (
             <div>
@@ -96,7 +107,8 @@ class FilterableCarTable extends Component {
                 />
                 <PaginationBar 
                     pagination={this.state.pagination}
-                    onLimitSelect={this.handleLimitSelect}    
+                    onLimitSelect={this.handleLimitSelect}
+                    onPreviousButtonClick={this.handlePreviousButtonClick}    
                 />
             </div>
         );

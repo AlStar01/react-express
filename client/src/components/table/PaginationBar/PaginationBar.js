@@ -12,6 +12,9 @@ class PaginationBar extends Component {
         this.handleLimitSelect = this.handleLimitSelect.bind(this);
         this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
         this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+
+        this.getStartingValue = this.getStartingValue.bind(this);
+        this.getEndingValue = this.getEndingValue.bind(this);
     }
 
     handleLimitSelect(e) {
@@ -19,11 +22,22 @@ class PaginationBar extends Component {
     }
 
     handlePreviousButtonClick() {
-        console.log("Previous button clicked");
+        if(this.props.pagination.page > 1) {
+            this.props.onPreviousButtonClick();
+        }
     }
 
     handleNextButtonClick() {
         console.log("Next button clicks");
+    }
+
+    getStartingValue() {
+        const pagination = this.props.pagination;
+        return (pagination.page * pagination.limit + 1) - pagination.limit;
+    }
+
+    getEndingValue() {
+        return this.props.pagination.page * this.props.pagination.limit;
     }
 
     render() {
@@ -36,7 +50,9 @@ class PaginationBar extends Component {
             <Row>
                 <Col sm={12}>
                     <div className="pull-left pagination__label">
-                        <div style={{ paddingTop: 7 }}>Showing result 1 - 10 of {pagination.total}</div>
+                        <div style={{ paddingTop: 7 }}>
+                            Showing result {this.getStartingValue()} - {this.getEndingValue()} of {pagination.total}
+                        </div>
                     </div>
                     <div className="pull-right">
                         <Form inline>
